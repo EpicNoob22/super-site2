@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for SuperSite - Ultra Beautiful Modern Website">
+  <title>Register - SuperSite</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4 py-8">
+  
+  <!-- Background gradient -->
+  <div class="fixed inset-0 animated-gradient opacity-20 -z-10"></div>
+  
+  <!-- Register Card -->
+  <div class="w-full max-w-md">
+    <!-- Back to home -->
+    <div class="text-center mb-8">
+      <a href="/" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Back to Home
+      </a>
+    </div>
+    
+    <!-- Glass card -->
+    <div class="glass bg-white/90 dark:bg-gray-800/90 rounded-3xl shadow-2xl p-8 backdrop-blur-xl">
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl mb-4">
+          <span class="text-3xl">🚀</span>
+        </div>
+        <h1 class="text-3xl font-bold mb-2">Create Account</h1>
+        <p class="text-gray-600 dark:text-gray-400">Join SuperSite today</p>
+      </div>
+      
+      <!-- Register Form -->
+      <form id="registerForm" class="space-y-6">
+        <!-- Name -->
+        <div>
+          <label for="name" class="block text-sm font-medium mb-2">Full Name</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-user text-gray-400"></i>
+            </div>
+            <input 
+              type="text" 
+              id="name" 
+              name="name"
+              class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              placeholder="John Doe"
+              required
+              aria-label="Full name"
+            >
+          </div>
+        </div>
+        
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-envelope text-gray-400"></i>
+            </div>
+            <input 
+              type="email" 
+              id="email" 
+              name="email"
+              class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              placeholder="john@example.com"
+              required
+              aria-label="Email address"
+            >
+          </div>
+        </div>
+        
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-sm font-medium mb-2">Password</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            <input 
+              type="password" 
+              id="password" 
+              name="password"
+              class="form-input w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              placeholder="••••••••"
+              required
+              aria-label="Password"
+              minlength="6"
+            >
+            <button 
+              type="button" 
+              onclick="togglePassword('password')"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center"
+              aria-label="Toggle password visibility"
+            >
+              <i id="passwordIcon" class="fas fa-eye text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"></i>
+            </button>
+          </div>
+          <!-- Password Strength Indicator -->
+          <div class="mt-2">
+            <div class="h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div id="passwordStrength" class="h-full transition-all duration-300"></div>
+            </div>
+            <p id="passwordStrengthText" class="text-xs mt-1 text-gray-500 dark:text-gray-400"></p>
+          </div>
+        </div>
+        
+        <!-- Confirm Password -->
+        <div>
+          <label for="confirmPassword" class="block text-sm font-medium mb-2">Confirm Password</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            <input 
+              type="password" 
+              id="confirmPassword" 
+              name="confirmPassword"
+              class="form-input w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              placeholder="••••••••"
+              required
+              aria-label="Confirm password"
+            >
+            <button 
+              type="button" 
+              onclick="togglePassword('confirmPassword')"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center"
+              aria-label="Toggle confirm password visibility"
+            >
+              <i id="confirmPasswordIcon" class="fas fa-eye text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Terms -->
+        <div class="flex items-start">
+          <input 
+            type="checkbox" 
+            id="terms" 
+            name="terms"
+            class="mt-1 w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            required
+          >
+          <label for="terms" class="ml-2 text-sm text-gray-600 dark:text-gray-400">
+            I agree to the Terms of Service and Privacy Policy
+          </label>
+        </div>
+        
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          class="w-full btn-primary text-white font-semibold py-3 rounded-xl shadow-lg"
+          aria-label="Create account"
+        >
+          Create Account
+        </button>
+        
+        <!-- Login Link -->
+        <div class="text-center">
+          <p class="text-gray-600 dark:text-gray-400">
+            Already have an account? 
+            <a href="login.html" class="text-purple-600 dark:text-purple-400 font-semibold hover:text-purple-700 dark:hover:text-purple-300">
+              Sign In
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <div class="text-center mt-6">
+      <button id="themeToggle" class="p-3 rounded-full glass hover:bg-white/20 dark:hover:bg-gray-800/20 transition">
+        <i class="fas fa-moon text-xl"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="js/database.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    // Check if already logged in
+    if (auth.isAuthenticated()) {
+      window.location.href = 'dashboard.html';
+    }
+    
+    // Toggle password visibility
+    function togglePassword(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const icon = document.getElementById(inputId + 'Icon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+    
+    // Password strength checker
+    document.getElementById('password').addEventListener('input', (e) => {
+      const password = e.target.value;
+      const strengthBar = document.getElementById('passwordStrength');
+      const strengthText = document.getElementById('passwordStrengthText');
+      
+      let strength = 0;
+      if (password.length >= 6) strength++;
+      if (password.length >= 10) strength++;
+      if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+      if (/\d/.test(password)) strength++;
+      if (/[^a-zA-Z0-9]/.test(password)) strength++;
+      
+      const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-lime-500', 'bg-green-500'];
+      const texts = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+      const widths = ['20%', '40%', '60%', '80%', '100%'];
+      
+      strengthBar.className = `h-full transition-all duration-300 ${colors[strength - 1] || 'bg-red-500'}`;
+      strengthBar.style.width = widths[strength - 1] || '0%';
+      strengthText.textContent = texts[strength - 1] || '';
+    });
+    
+    // Handle register form submission
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const terms = document.getElementById('terms').checked;
+      
+      // Validate
+      if (name.length < 2) {
+        Toast.show('Please enter your full name', 'error');
+        return;
+      }
+      
+      if (!validateEmail(email)) {
+        Toast.show('Please enter a valid email address', 'error');
+        return;
+      }
+      
+      if (!validatePassword(password)) {
+        Toast.show('Password must be at least 6 characters', 'error');
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        Toast.show('Passwords do not match', 'error');
+        return;
+      }
+      
+      if (!terms) {
+        Toast.show('Please accept the terms and conditions', 'error');
+        return;
+      }
+      
+      // Attempt registration
+      const result = auth.register(name, email, password);
+      
+      if (result.success) {
+        Toast.show('Registration successful! Please log in.', 'success');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1500);
+      } else {
+        Toast.show(result.message, 'error');
+      }
+    });
+  </script>
+  
+</body>
+</html>
