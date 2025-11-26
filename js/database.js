@@ -49,6 +49,9 @@ class Database {
   }
 
   // Hash password (simple implementation for demo)
+  // NOTE: This is NOT cryptographically secure and is only for demonstration purposes.
+  // In production, use proper server-side hashing with bcrypt, argon2, or similar.
+  // For a client-only demo, consider using Web Crypto API's SubtleCrypto.digest()
   hashPassword(password) {
     let hash = 0;
     for (let i = 0; i < password.length; i++) {

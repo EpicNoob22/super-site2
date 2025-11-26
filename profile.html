@@ -283,8 +283,9 @@
     
     // Delete account modal
     function openDeleteModal() {
-      if (currentUser.userId === 1) {
-        Toast.show('Cannot delete default admin account', 'error');
+      // Don't allow deleting admin accounts
+      if (currentUser.role === 'Admin') {
+        Toast.show('Admin accounts cannot be deleted', 'error');
         return;
       }
       Modal.open('deleteAccountModal');

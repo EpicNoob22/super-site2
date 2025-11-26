@@ -68,7 +68,7 @@ class Auth {
     localStorage.removeItem('session');
     sessionStorage.removeItem('session');
     this.currentUser = null;
-    window.location.href = '/login.html';
+    window.location.href = 'login.html';
   }
 
   // Get current user
@@ -93,7 +93,7 @@ class Auth {
   // Protect page (redirect to login if not authenticated)
   protectPage() {
     if (!this.isAuthenticated()) {
-      window.location.href = '/login.html';
+      window.location.href = 'login.html';
       return false;
     }
     return true;

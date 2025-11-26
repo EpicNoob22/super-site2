@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!auth.protectPage()) return;
   
   // Check if user is admin
+  // NOTE: Client-side role check is insufficient for production security.
+  // This can be bypassed by modifying client code. In production, all authorization
+  // must be enforced server-side. This is acceptable for a client-only demo.
   const currentUser = auth.getCurrentUser();
   if (currentUser.role !== 'Admin') {
     Toast.show('Access denied. Admin privileges required.', 'error');
